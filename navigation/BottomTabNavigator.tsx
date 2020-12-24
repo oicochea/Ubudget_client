@@ -7,7 +7,8 @@ import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import TabExpenses from '../screens/TabExpenses';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList, TabExpensesParamList} from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -32,6 +33,13 @@ export default function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
+      <BottomTab.Screen
+        name="TabExpenses"
+        component={TabExpensesNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
     </BottomTab.Navigator>
   );
 }
@@ -52,7 +60,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle: 'Welcome' }}
       />
     </TabOneStack.Navigator>
   );
@@ -69,5 +77,19 @@ function TabTwoNavigator() {
         options={{ headerTitle: 'Tab Two Title' }}
       />
     </TabTwoStack.Navigator>
+  );
+}
+
+const TabExpensesStack = createStackNavigator<TabExpensesParamList>();
+
+function TabExpensesNavigator() {
+  return (
+    <TabExpensesStack.Navigator>
+      <TabExpensesStack.Screen
+        name="TabExpensesScreen"
+        component={TabExpenses}
+        options={{ headerTitle: 'Tab Two Title' }}
+      />
+    </TabExpensesStack.Navigator>
   );
 }

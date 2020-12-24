@@ -17,6 +17,11 @@ export default {
             },
           },
         },
+        TabExpenses: {
+          screens: {
+            TabExpensesScreen: 'expenses',
+          },
+        },
       },
       NotFound: '*',
     },
